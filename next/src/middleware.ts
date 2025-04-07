@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const { pathname } = url;
 
-  if (!jwt && pathname.startsWith("/protected")) {
+  if (!jwt && pathname.startsWith("/note")) {
     url.pathname = "/login";
     return NextResponse.redirect(url);
   }
@@ -20,5 +20,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/protected/:path*", "/login", "/register"],
+  matcher: ["/note/:path*", "/login", "/register"],
 };
